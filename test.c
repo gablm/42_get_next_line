@@ -6,7 +6,7 @@
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:22:08 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/08/31 15:04:50 by gfragoso         ###   ########.fr       */
+/*   Updated: 2023/08/31 18:27:40 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h>
 
 int	main(int argc, char **argv)
 {
@@ -22,8 +21,6 @@ int	main(int argc, char **argv)
 	char	*a;
 
 	fd = open(argv[argc - 1], O_RDONLY);
-	if (fd < 1) 
-		return (0);
 	a = get_next_line(fd);
 	while (a)
 	{
@@ -32,5 +29,6 @@ int	main(int argc, char **argv)
 		a = get_next_line(fd);
 	}
 	close(fd);
+	printf("%d", BUFFER_SIZE);
 	return (0);
 }

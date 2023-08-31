@@ -6,7 +6,7 @@
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 22:19:17 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/08/31 15:00:44 by gfragoso         ###   ########.fr       */
+/*   Updated: 2023/08/31 17:17:47 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*strdup_tilln(char *str)
 	char	*res;
 
 	i = 0;
-	while (str[i] && str[i] != '\n' && str[i] != -1)
+	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
 		i++;
@@ -35,16 +35,15 @@ void	strcpy_fromn(char *str)
 	int	j;
 
 	i = 0;
-	while (str[i] && str[i] != '\n' && str[i] != -1)
+	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
 		i++;
-	else
-		return ;
 	j = 0;
 	while (str[i])
 		str[j++] = str[i++];
-	str[j] = 0;
+	while (str[j])
+		str[j++] = 0;
 }
 
 size_t	ft_strlen(const char *s)
@@ -80,16 +79,20 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*res;
 	int		i;
 	int		h;
+	int		s1len;
+	int		s2len;
 
-	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	res = (char *)malloc(sizeof(char) * (s1len + s2len + 1));
 	if (!res)
 		return (NULL);
 	i = 0;
 	h = 0;
-	while (h < (int)ft_strlen(s1))
+	while (h < s1len)
 		res[i++] = s1[h++];
 	h = 0;
-	while (h < (int)ft_strlen(s2))
+	while (h < s2len)
 		res[i++] = s2[h++];
 	res[i] = 0;
 	free(s2);
