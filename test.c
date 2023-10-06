@@ -23,11 +23,12 @@ int	main(int argc, char **argv)
 	a = get_next_line(fd);
 	while (a)
 	{
+		write(1, "->", 2);
 		write(1, a, ft_strlen(a));
 		free(a);
+		write(1, "<-\n", 3);
 		a = get_next_line(fd);
 	}
 	close(fd);
-	printf("%d", BUFFER_SIZE);
 	return (0);
 }
