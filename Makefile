@@ -1,11 +1,11 @@
 NAME=test
 COMPILER=cc
 FLAGS= -Wall -Werror -Wextra
-FILES= get_next_line.c get_next_line_utils.c $(NAME).c
-FILES_B= $(FILES:.c=_bonus.c)
+FILES= get_next_line.c get_next_line_utils.c test.c
+FILES_B= get_next_line_bonus.c get_next_line_utils_bonus.c test_bonus.c
 
-m:
-	$(COMPILER) $(FLAGS) $(FILES) -o $(NAME) -D BUFFER_SIZE=42
+m: $(FILES)
+	$(COMPILER) $(FLAGS) $(FILES) -o $(NAME) -D BUFFER_SIZE=1
 
-b:
-	$(COMPILER) $(FLAGS) $(FILES_B) -o $(NAME) -D BUFFER_SIZE=42
+b: $(FILES_B)
+	$(COMPILER) $(FLAGS) $(FILES_B) -o $(NAME) -D BUFFER_SIZE=100
