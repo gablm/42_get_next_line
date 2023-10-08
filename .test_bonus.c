@@ -14,11 +14,20 @@
 
 #include <stdio.h>
 
+void	test(char *a, int fd)
+{
+	while (a)
+	{
+		write(1, a, ft_strlen(a));
+		free(a);
+		a = get_next_line(fd);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;
 	int		fd2;
-	int		i;
 	char	*a;
 	char	*b;
 
@@ -26,8 +35,7 @@ int	main(int argc, char **argv)
 	fd2 = open(argv[argc - 2], O_RDONLY);
 	a = get_next_line(fd);
 	b = get_next_line(fd2);
-	i = 0;
-	while (i < 2)
+	while (a && b)
 	{
 		write(1, a, ft_strlen(a));
 		free(a);
@@ -35,9 +43,8 @@ int	main(int argc, char **argv)
 		write(1, b, ft_strlen(b));
 		free(b);
 		b = get_next_line(fd2);
-		i++;
 	}
-	close(fd);
-	close(fd2);
+	test(a, fd);
+	test(b, fd2);
 	return (0);
 }
