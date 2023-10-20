@@ -5,4 +5,4 @@
 
 > Reading a line from a fd is way too tedious
 
-This project is a part of the [42](https://www.42network.org) Common Core curriculum.
+This project is part of the [42](https://www.42network.org) Common Core curriculum.
